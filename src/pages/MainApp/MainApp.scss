@@ -4,6 +4,9 @@
     height: 100vh;
 
     .content-wrapper {
+        max-width: 1200px;
+        margin: auto;
+        width: 1005%;
         flex: 1;
     }
 }
