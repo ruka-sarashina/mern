@@ -1,21 +1,32 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
-import { Header, Footer } from "../../components";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./MainApp.scss";
 import Home from "../Home";
+import CreateBlog from "../CreateBlog";
+import DetailBlog from "../DetailBlog";
+import { Header, Footer } from "../../components";
 
 const MainApp = () => {
   return (
-
     <div className="main-app-wrapper">
       <Header />
       <div className="content-wrapper">
-        <Home />
-        <Outlet />
-      </div>
-      <Footer />
+        <Router>
+          <Switch>
+            <Route path="/create-blog">
+              <CreateBlog />
+            </Route>
+            <Route path="/detail-blog">
+              <DetailBlog />
+            </Route>
+            <Route path="/">
+              <Home />
+            </Route>
+          </Switch>
+        </Router>
+      </div> 
+        <Footer />
     </div>
-    
   );
 };
 

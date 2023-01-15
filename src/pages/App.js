@@ -1,10 +1,10 @@
-import { Routers } from '../config';
+import { Routes } from '../config';
 import './App.css';
 
 
 function App() {
   return (
-    <Routers />
+    <Routes />
   );
 }
 
