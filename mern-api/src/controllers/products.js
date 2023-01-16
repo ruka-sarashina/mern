@@ -1,10 +1,12 @@
 exports.createProduct = (req, res, next) => {
+  const name = req.body.name; // agar menjadi dinamis
+  const price = req.body.price; // agar menjadi dinamis
   res.json({
     message: "Create Product Succes!!!",
     data: {
       id: 1,
-      name: "Roti",
-      price: 5000
+      name: name,
+      price: price
     }
   });
   next();
