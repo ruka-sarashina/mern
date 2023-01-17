@@ -3,6 +3,7 @@ const BlogPost = require("../models/blog");
 const fs = require("fs");
 const path = require("path");
 const { findByIdAndDelete } = require("../models/blog");
+const blog = require("../models/blog");
 
 exports.createBlogPost = (req, res, next) => {
   const erros = validationResult(req);
@@ -45,11 +46,25 @@ exports.createBlogPost = (req, res, next) => {
 };
 
 exports.getAllBlogPost = (req, res, next) => {
+  const currentPage = req.query.page || 1;
+  const perPage = req.query.perPage || 5;
+  let totalItems;
+
   BlogPost.find()
+    .countDocuments()
+    .then(count => {
+      totalItems = count;
+      return BlogPost.find()
+        .skip((parseInt(currentPage) - 1) * parseInt(perPage))
+        .limit(parseInt(perPage));
+    })
     .then(result => {
       res.status(200).json({
         message: "Data blog post berhasil dipanggil",
-        data: result
+        data: result,
+        totalData: totalItems,
+        per_page: parseInt(perPage),
+        current_page: parseInt(currentPage)
       });
     })
     .catch(err => {
@@ -133,12 +148,12 @@ exports.deleteBlogPost = (req, res, next) => {
         throw err;
       }
       removeImage(post.image);
-      return BlogPost.findByIdAndDelete(postId);
+      return BlogPostfindByIdAndDelete(postId);
     })
     .then(result => {
       res.status(200).json({
         message: "Hapus blog post berhasil",
-        data: result,
+        data: result
       });
     })
     .catch(err => {
