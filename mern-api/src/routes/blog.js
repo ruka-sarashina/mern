@@ -1,5 +1,6 @@
 const express = require("express");
 const { body } = require("express-validator");
+const path = require('path');
 
 const router = express.Router();
 const blogController = require("../controllers/blog");
@@ -14,8 +15,11 @@ router.post(
   blogController.createBlogPost
 );
 
+//! [GET] 
 router.get("/posts", blogController.getAllBlogPost);
 router.get("/post/:postId", blogController.getBlogPostById);
+
+//! [PUT] 
 router.put(
   "/post/:postId",
   [
@@ -24,4 +28,7 @@ router.put(
   ],
   blogController.updateBlogPost
 );
+
+//! [DELETE] 
+router.delete('/post/:postId', blogController.deleteBlogPost)
 module.exports = router;
