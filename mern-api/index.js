@@ -31,8 +31,8 @@ const fileFilter = (req, file, cb) => {
 };
 
 app.use(bodyParser.json()); // type JSON
-app.use(multer({storage: fileStorage, fileFilter: fileFilter}).single('image'))
 app.use('/images', express.static(path.join(__dirname, 'images')))
+app.use(multer({storage: fileStorage, fileFilter: fileFilter}).single('image'))
 app.use(cors());
 
 app.use("/v1/auth", authRoutes);
