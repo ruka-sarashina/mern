@@ -1,16 +1,27 @@
 const initialStateHome = {
-    datablog: [],
-}
+  datablog: [],
+  page: {
+    currentPage: 1,
+    totalPage: 1
+  }
+};
 
 const homeReducer = (state = initialStateHome, action) => {
-    if (action.type === "UPDATE_DATA_BLOG") {
-      return {
-        ...state,
-        datablog: action.payload
-      };
-    }
+  if (action.type === "UPDATE_DATA_BLOG") {
+    return {
+      ...state,
+      datablog: action.payload
+    };
+  }
 
-    return state;
-}
+  if (action.type === "UPDATE_PAGE") {
+    return {
+      ...state,
+      page: action.payload
+    };
+  }
 
-export default homeReducer
+  return state;
+};
+
+export default homeReducer;

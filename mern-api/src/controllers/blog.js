@@ -62,7 +62,7 @@ exports.getAllBlogPost = (req, res, next) => {
       res.status(200).json({
         message: "Data blog post berhasil dipanggil",
         data: result,
-        totalData: totalItems,
+        total_data: totalItems,
         per_page: parseInt(perPage),
         current_page: parseInt(currentPage)
       });
