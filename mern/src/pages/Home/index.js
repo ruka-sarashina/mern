@@ -2,26 +2,19 @@ import React, { useEffect } from "react";
 import { Button, BlogItem, Gap } from "../../components";
 import "./Home.scss";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
-import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
+import { setDatablog } from "../../config/redux/action";
 
 const Home = () => {
-  const {datablog} = useSelector(state => state.homeReducer);
+  const { datablog } = useSelector(state => state.homeReducer);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-
-    axios
-      .get("http://localhost:4000/v1/blog/posts?page=2&perPage=2")
-      .then(result => {
-        const responseAPI = result.data;
-
-        dispatch({ type: "UPDATE_DATA_BLOG", payload: responseAPI.data });
-      })
-      .catch(err => {
-        console.log("error:", err);
-      });
-  }, []);
+  useEffect(
+    () => {
+      dispatch(setDatablog());
+    },
+    [dispatch]
+  );
   const History = useHistory();
   return (
     <div className="home-page-wrapper">
@@ -46,6 +39,7 @@ const Home = () => {
           );
         })}
       </div>
+      <Gap height={40} />
       <div className="pagination">
         <Button title="Previous" />
         <Gap width={20} />
