@@ -148,7 +148,7 @@ exports.deleteBlogPost = (req, res, next) => {
         throw err;
       }
       removeImage(post.image);
-      return BlogPostfindByIdAndDelete(postId);
+      return BlogPost.findByIdAndDelete(postId);
     })
     .then(result => {
       res.status(200).json({
