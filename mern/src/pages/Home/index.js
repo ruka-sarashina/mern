@@ -10,7 +10,7 @@ const Home = () => {
   const { datablog, page } = useSelector(state => state.homeReducer);
   const dispatch = useDispatch();
 
-  console.log("page: ", dispatch);
+  // console.log("page: ", dispatch);
 
   useEffect(
     () => {
@@ -21,12 +21,12 @@ const Home = () => {
   const History = useHistory();
   const previos = () => {
     setCounter(counter <= 1 ? 1 : counter - 1);
-    console.log(counter);
+    // console.log(counter);
   };
 
   const next = () => {
     setCounter(counter === page.totalPage ? page.totalPage : counter + 1);
-    console.log(counter);
+    // console.log(counter);
   };
   return (
     <div className="home-page-wrapper">
@@ -47,6 +47,7 @@ const Home = () => {
               body={blog.body}
               name={blog.author.name}
               date={blog.createdAt}
+              _id={blog._id}
             />
           );
         })}
@@ -55,7 +56,9 @@ const Home = () => {
       <div className="pagination">
         <Button title="Previous" onClick={previos} />
         <Gap width={20} />
-        <p className="text-page"> {page.currentPage} / {page.totalPage} </p>
+        <p className="text-page">
+          {" "}{page.currentPage} / {page.totalPage}{" "}
+        </p>
         <Gap width={20} />
         <Button title="Next" onClick={next} />
       </div>
