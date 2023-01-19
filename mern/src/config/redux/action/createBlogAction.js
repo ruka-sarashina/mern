@@ -23,3 +23,19 @@ export const postToAPI = form => {
     .then(result => console.log("post succes", result))
     .catch(err => console.log("err", err));
 };
+
+export const updateToAPI = (form,id) => {
+  const data = new FormData();
+  data.append("title", form.title);
+  data.append("body", form.body);
+  data.append("image", form.image);
+
+  axios
+    .put(`http://localhost:4000/v1/blog/post/${id}`, data, {
+      Headers: {
+        "content-type": "multipart/form-data"
+      }
+    })
+    .then(result => console.log("update succes", result))
+    .catch(err => console.log("err", err));
+}
