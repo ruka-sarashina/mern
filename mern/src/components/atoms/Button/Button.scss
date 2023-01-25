@@ -1,7 +1,7 @@
 .button {
      padding: 12px;
      font-size: 16px;
-     background-color: #87c73c;
+     background-color: #2563eb;
      width: 100%;
      border-radius: 12px;
      border: none;
@@ -9,7 +9,7 @@
      text-transform: uppercase;
      &:hover {
          cursor: pointer;
-         background-color: #70c73c;
          transition: 250ms;
+         opacity: 0.8;
      }
  }

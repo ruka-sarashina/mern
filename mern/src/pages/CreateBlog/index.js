@@ -37,8 +37,10 @@ const CreateBlog = (props) => {
     if(isUpdate){
       console.log('update data');
       updateToAPI(form,id)
+      alert('Data berhasil di update', History.push('/'))
     } else {
       console.log('create data');
+      alert('Data Berhasil di buat')
       postToAPI(form);
     }
   };

@@ -5,6 +5,8 @@ import Home from "../Home";
 import CreateBlog from "../CreateBlog";
 import DetailBlog from "../DetailBlog";
 import { Header, Footer } from "../../components";
+import HomeSection from "../HomeSection";
+import AboutSection from "../AboutSection";
 
 const MainApp = () => {
   return (
@@ -20,6 +22,8 @@ const MainApp = () => {
               <DetailBlog />
             </Route>
             <Route path="/">
+              <HomeSection/>
+              <AboutSection/>
               <Home />
             </Route>
           </Switch>

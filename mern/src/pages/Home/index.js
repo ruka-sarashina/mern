@@ -61,6 +61,7 @@ const Home = () => {
 
   return (
     <div className="home-page-wrapper">
+      <h1 className="wrap-text">Blog Mern</h1>
       <div className="create-wrapper">
         <Button
           title="create blog"
