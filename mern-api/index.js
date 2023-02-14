@@ -51,7 +51,7 @@ app.use((error, req, res, next) => {
 
 mongoose
   .connect(
-    "mongodb+srv://taufik:AegVx03pWSSzySdJ@cluster0.zarckef.mongodb.net/?retryWrites=true&w=majority"
+    ""
   )
   .then(() => {
     app.listen(4000, () => console.log("Connection Succes"));
